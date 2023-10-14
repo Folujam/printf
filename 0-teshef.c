@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <unistd.h>
+#include <stdarg.h>
 /**
   *_printf - print format
   *@format: const char var
@@ -29,7 +30,6 @@ int _printf(const char *format, ...)
 			{
 				cara = va_arg(args, int);
 				write(1, &cara, 1);
-				i++;
 			}
 			else if (*format == 's')
 			{
@@ -40,8 +40,8 @@ int _printf(const char *format, ...)
 			else if (*format == '%')
 			{
 				write(1, format, 1);
-				i++;
 			}
+			i++;
 		}
 	}
 	va_end(args);
