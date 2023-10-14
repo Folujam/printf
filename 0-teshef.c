@@ -1,6 +1,5 @@
 #include "main.h"
-#include <unistd.h>
-#include <stdarg.h>
+
 /**
   *_printf - print format
   *@format: const char var
