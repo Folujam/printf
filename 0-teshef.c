@@ -29,13 +29,12 @@ int _printf(const char *format, ...)
 				if (format[i + 1] == '\0')
 				{
 					va_end(args);
-					return (-1);
+					return (ctr);
 				}
-				i++;
 				ctr += handle_see(format, args);
 			}
 		}
 	}
 	va_end(args);
-	return (i);
+	return (ctr);
 }
