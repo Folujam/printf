@@ -12,7 +12,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 	{
-		va_end(args);
 		return (-1);
 	}
 	va_start(args, format);
@@ -27,12 +26,12 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				i++;
-				if (format[i] == '\0')
+				if (format[i + 1] == '\0')
 				{
 					va_end(args);
 					return (-1);
 				}
+				i++;
 				ctr += handle_see(format, args);
 			}
 		}
