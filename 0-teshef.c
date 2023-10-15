@@ -7,56 +7,36 @@
   */
 int _printf(const char *format, ...)
 {
-	int i = 0;
+	int i, ctr = 0;
 	va_list args;
-	char cara, *str;
 
-	if (format == 0)
+	if (format == NULL)
 	{
-		return (0);
+		va_end(args);
+		return (-1);
 	}
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	if (*format)
 	{
-		if (format[i] != '%')
-			write(1, &format[i], 1);
-		else
+		for (i = 0; format[i]; i++)
 		{
-			format++;
-			if (*format == '\0')
-				break;
-			else if (*format == 'c')
+			if (format[i] != '%')
 			{
-				cara = va_arg(args, int);
-				write(1, &cara, 1);
+				write(1, &format[i], 1);
+				ctr++;
 			}
-			else if (*format == 's')
+			else
 			{
-				str = va_arg(args, char *);
-				write(1, str, stl(str));
-				i += stl(str);
+				i++;
+				if (format[i] == '\0')
+				{
+					va_end(args);
+					return (-1);
+				}
+				ctr += handle_see(format, args);
 			}
-			else if (*format == '%')
-			{
-				write(1, format, 1);
-			}
-			i++;
 		}
 	}
 	va_end(args);
 	return (i);
-}
-/**
-  *stl - string lenght
-  *@s: string pointer
-  *Return: int
-  */
-int stl(char *s)
-{
-	int l = 0;
-	while (s[l] != '\0')
-	{
-		l++;
-	}
-	return (l);
 }
