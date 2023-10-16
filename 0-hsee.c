@@ -16,7 +16,7 @@ int handle_see(const char *format, va_list args, int i)
 	{
 		cara = (char) va_arg(args, int);
 		_putchar(cara);
-		return (1);
+		return (2);
 		ctr++;
 	}
 	else if (format[i + 1] == 's')
@@ -24,16 +24,18 @@ int handle_see(const char *format, va_list args, int i)
 		str = va_arg(args, char *);
 		write(1, str, strlen(str));
 		ctr += strlen(str);
-		return (1);
+		return (2);
 	}
 	else if (format[i + 1] == '%')
 	{
 		_putchar(format[i]);
 		ctr++;
-		return (1);
+		return (2);
 	}
 	else if (format[i] == 'd' || format[i] == 'i')
+	{
 		ctr += dandli(format, args, i);
+		return (ctr);
 	else
 	{
 		_putchar('%');
@@ -41,7 +43,6 @@ int handle_see(const char *format, va_list args, int i)
 		ctr += 2;
 		return (2);
 	}
-	return (ctr);
 }
 /**
   *dandli - handles d and i specifiers
