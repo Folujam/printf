@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int i, ctr = 0;
 	va_list args;
 
-	if (format == NULL || strcmp(format, "") == 0 )
+	if (format == NULL || strcmp(format, "") == 0)
 		return (-1);
 	va_start(args, format);
 	if (*format)
