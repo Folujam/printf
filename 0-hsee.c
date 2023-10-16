@@ -10,13 +10,13 @@
 int handle_see(const char *format, va_list args, int i)
 {
 	char cara, *str;
-	int ctr = 0;
+	int chars_pro, ctr = 0;
 
 	if (format[i + 1] == 'c')
 	{
 		cara = (char) va_arg(args, int);
 		_putchar(cara);
-		i++;
+		return (1);
 		ctr++;
 	}
 	else if (format[i + 1] == 's')
@@ -24,13 +24,13 @@ int handle_see(const char *format, va_list args, int i)
 		str = va_arg(args, char *);
 		write(1, str, strlen(str));
 		ctr += strlen(str);
-		i++;
+		return (1);
 	}
 	else if (format[i + 1] == '%')
 	{
 		_putchar(format[i]);
 		ctr++;
-		i++;
+		return (1);
 	}
 	else if (format[i] == 'd' || format[i] == 'i')
 		ctr += dandli(format, args, i);
@@ -39,7 +39,7 @@ int handle_see(const char *format, va_list args, int i)
 		_putchar('%');
 		_putchar(format[i + 1]);
 		ctr += 2;
-		i++;
+		return (2);
 	}
 	return (ctr);
 }
@@ -64,8 +64,9 @@ int  dandli(const char *format, va_list args, int i)
 			_putchar(str[a]);
 		ctr += strlen(str);
 		free(str);
+		return (1);
 	}
-	return (ctr);
+	return (0);
 }
 /**
   *int_to_stng - converts int to string

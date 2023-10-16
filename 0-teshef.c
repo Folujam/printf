@@ -7,7 +7,7 @@
   */
 int _printf(const char *format, ...)
 {
-	int i, ctr = 0;
+	int i, ch_pro, ctr = 0;
 	va_list args;
 
 	if (format == NULL || strcmp(format, "") == 0)
@@ -33,7 +33,10 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					ctr += handle_see(format, args, i);
+					ch_pro += handle_see(format, args, i);
+					i += ch_pro;
+					ch_pro += dandli(format, args, i);
+					i += ch_pro;
 				}
 			}
 		}
