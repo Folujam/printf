@@ -21,7 +21,7 @@ int handle_see(const char *format, va_list args)
 	else if (format[i + 1] == 's')
 	{
 		str = va_arg(args, char *);
-		write(1, &str, strlen(str));
+		write(1, str, strlen(str));
 		ctr += strlen(str);
 		i++;
 	}
@@ -34,7 +34,8 @@ int handle_see(const char *format, va_list args)
 	else
 	{
 		_putchar('%');
-		ctr++;
+		_putchar(format[i + 1]);
+		ctr += 2;
 		i++;
 	}
 	return (ctr);
