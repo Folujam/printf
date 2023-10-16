@@ -13,7 +13,7 @@ int handle_see(const char *format, va_list args)
 
 	if (format[i + 1] == 'c')
 	{
-		cara = va_arg(args, int);
+		cara = (char) va_arg(args, int);
 		_putchar(cara);
 		i++;
 		ctr++;
@@ -21,7 +21,7 @@ int handle_see(const char *format, va_list args)
 	else if (format[i + 1] == 's')
 	{
 		str = va_arg(args, char *);
-		write(1, str, strlen(str));
+		write(1, &str, strlen(str));
 		ctr += strlen(str);
 		i++;
 	}
@@ -35,15 +35,7 @@ int handle_see(const char *format, va_list args)
 	{
 		_putchar('%');
 		ctr++;
-		if (format[i + 1] != '\0')
-		{
-			if (format[i + 1] != 'c' && format[i + 1] != 's' && format[i + 1] != '%')
-			{
-				_putchar(format[i + 1]);
-				ctr++;
-			}
-			i++;
-		}
+		i++;
 	}
 	return (ctr);
 }
