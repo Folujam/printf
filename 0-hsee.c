@@ -34,8 +34,9 @@ int handle_see(const char *format, va_list args, int i)
 	}
 	else if (format[i] == 'd' || format[i] == 'i')
 	{
-		ctr += dandli(format, args, i);
-		return (ctr);
+		dandli_return = dandli(format, args, i);
+		ctr += dandli_return;
+		return (dandli_return);
 	}
 	else
 	{
