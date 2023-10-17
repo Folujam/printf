@@ -36,6 +36,7 @@ int handle_see(const char *format, va_list args, int i)
 	{
 		ctr += dandli(format, args, i);
 		return (ctr);
+	}
 	else
 	{
 		_putchar('%');
