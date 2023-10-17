@@ -10,7 +10,7 @@
 int handle_see(const char *format, va_list args, int i)
 {
 	char cara, *str;
-	int chars_pro, ctr = 0;
+	int chars_pro, dandli_return, ctr = 0;
 
 	if (format[i + 1] == 'c')
 	{
