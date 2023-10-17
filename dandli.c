@@ -21,7 +21,7 @@ int  dandli(const char *format, va_list args, int i)
 			_putchar(str[a]);
 		ctr += strlen(str);
 		free(str);
-		return (1);
+		return (2);
 	}
 	return (0);
 }
@@ -35,7 +35,7 @@ char *int_to_stng(int n)
 	int l = 0, temp = n, i;
 	char *nomba;
 
-	if (n == '-')
+	if (n < 0)
 		n = n * -1;
 	while (temp != 0)
 	{

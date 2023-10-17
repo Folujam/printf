@@ -33,9 +33,9 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					ch_pro += handle_see(format, args, i);
+					ch_pro = handle_see(format, args, i);
 					i += ch_pro;
-					ch_pro += dandli(format, args, i);
+					ch_pro = dandli(format, args, i);
 					i += ch_pro;
 				}
 			}
