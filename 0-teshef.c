@@ -26,15 +26,13 @@ int _printf(const char *format, ...)
 			{
 				if (format[i + 1] == '\0')
 				{
-					_putchar('%');
-					ctr++;
 					va_end(args);
-					return (ctr);
+					return (-1);
 				}
 				else
 				{
 					ch_pro = handle_see(format, args, i);
-					i += ch_pro;
+					i += 1;
 					ctr += ch_pro;
 				}
 			}

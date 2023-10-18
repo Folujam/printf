@@ -13,7 +13,7 @@ int  dandli(const char *format, va_list args, int i)
 	unsigned long int a;
 	char *str;
 
-	if (format[i] == 'd' || format[i] == 'i')
+	if (format[i + 1] == 'd' || format[i + 1] == 'i')
 	{
 		nomba = va_arg(args, int);
 		str = int_to_stng(nomba);
@@ -62,7 +62,7 @@ char *int_to_stng(int n)
 			nomba[i + 1] = nomba[i];
 		}
 		nomba[0] = '-';
-		nomba[l + 1] = '\0';
+		nomba[l] = '\0';
 	}
 	else
 		nomba[l] = '\0';
