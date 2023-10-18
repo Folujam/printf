@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *dandil - handles d and i specifiers
+ *dandli - handles d and i specifiers
  *@format: buffer var
  *@args: var of va_list data type
  *@i: int var
@@ -21,7 +21,7 @@ int  dandli(const char *format, va_list args, int i)
 			_putchar(str[a]);
 		ctr += strlen(str);
 		free(str);
-		return (2);
+		return (ctr);
 	}
 	return (0);
 }

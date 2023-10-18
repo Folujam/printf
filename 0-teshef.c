@@ -35,8 +35,7 @@ int _printf(const char *format, ...)
 				{
 					ch_pro = handle_see(format, args, i);
 					i += ch_pro;
-					ch_pro = dandli(format, args, i);
-					i += ch_pro;
+					ctr += ch_pro;
 				}
 			}
 		}
