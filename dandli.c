@@ -34,15 +34,20 @@ char *int_to_stng(int n)
 {
 	int l = 0, temp = n, i;
 	char *nomba;
+	bool isN = false;
 
 	if (n < 0)
+	{
+		isN = true;
 		n = n * -1;
+		l += 1;
+	}
 	while (temp != 0)
 	{
 		temp = temp / 10;
 			l++;
 	}
-	nomba = malloc(l + 1 * sizeof(char));
+	nomba = malloc((l + 1) * sizeof(char));
 	if (nomba == 0)
 		return (0);
 	for (i = l - 1; i >= 0; i--)
@@ -50,6 +55,16 @@ char *int_to_stng(int n)
 		nomba[i] = '0' + n % 10;
 		n = n / 10;
 	}
-	nomba[l] = '\0';
+	if (isN)
+	{
+		for (i = l - 1; i >= 0; i--)
+		{
+			nomba[i + 1] = nomba[i];
+		}
+		nomba[0] = '-';
+		nomba[l + 1] = '\0';
+	}
+	else
+		nomba[l] = '\0';
 	return (nomba);
 }
