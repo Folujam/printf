@@ -10,11 +10,16 @@
 int handle_see(const char *format, va_list args, int i)
 {
 	char cara, *str;
-	int h, ctr = 0;
+	int chek, h, ctr = 0;
 
 	if (format[i + 1] == 'c')
 	{
-		cara = (char) va_arg(args, int);
+		chek = va_arg(args, int);
+		if (chek < -128 || chek > 127)/* limits of a signed char*/
+		{
+			return (-1);
+		}
+		cara = (char) chek;
 		_putchar(cara);
 		ctr++;
 		return (ctr);
@@ -40,7 +45,6 @@ int handle_see(const char *format, va_list args, int i)
 		h = conti(format, args, i);
 		ctr += h;
 		return (ctr);
-
 	}
 
 }
