@@ -12,7 +12,7 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 int handle_see(const char *format, va_list agrs, int i);
 int dandli(const char *format, va_list agrs, int i);
-char *int_to_stng(int n); 
+char *int_to_stng(int n);
 int conti(const char *format, va_list args, int i);
 
 #endif
