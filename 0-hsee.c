@@ -71,6 +71,12 @@ int conti(const char *format, va_list args, int i)
 		ctr += dandli_return;
 		return (ctr);
 	}
+	else if (format[i + 1] == 'b')
+	{
+		h = riry(format, args, i);
+		ctr += h;
+		return (ctr);
+	}
 	else
 	{
 		_putchar('%');
