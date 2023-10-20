@@ -36,7 +36,7 @@ char *int_to_stng(int n)
 	char *nomba;
 	bool isN = false;
 
-	if (n == INT_MIN || n == 0 || n == INT_MAX)
+	if (n <= INT_MIN || n >= INT_MAX || n == 0)
 	{
 		nomba = chkz(n);
 		return (nomba);
@@ -80,7 +80,7 @@ char *chkz(int n)
 {
 	char *nomba;
 
-	if (n == INT_MIN)
+	if (n <= INT_MIN)
 	{
 		nomba = malloc(12 * sizeof(char));
 		if (nomba == 0)
@@ -97,7 +97,7 @@ char *chkz(int n)
 		nomba[1] = '\0';
 		return (nomba);
 	}
-	else if (n == INT_MAX)
+	else if (n >= INT_MAX)
 	{
 		nomba = malloc(11 * sizeof(char));
 		if (nomba == 0)
