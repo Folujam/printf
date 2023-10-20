@@ -36,7 +36,7 @@ char *int_to_stng(int n)
 	char *nomba;
 	bool isN = false;
 
-	if (n == INT_MIN || n == 0)
+	if (n == INT_MIN || n == 0 || n == INT_MAX)
 	{
 		nomba = chkz(n);
 		return (nomba);
