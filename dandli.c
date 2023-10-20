@@ -36,6 +36,11 @@ char *int_to_stng(int n)
 	char *nomba;
 	bool isN = false;
 
+	if (n == INT_MIN || n == 0)
+	{
+		nomba = chkz(n);
+		return (nomba);
+	}
 	if (n < 0)
 	{
 		isN = true;
@@ -52,19 +57,54 @@ char *int_to_stng(int n)
 		return (0);
 	for (i = l - 1; i >= 0; i--)
 	{
-		nomba[i] = '0' + n % 10;
+		nomba[i] = '0' + (n % 10);
 		n = n / 10;
 	}
 	if (isN)
 	{
 		for (i = l - 1; i >= 0; i--)
-		{
 			nomba[i + 1] = nomba[i];
-		}
 		nomba[0] = '-';
 		nomba[l] = '\0';
 	}
 	else
 		nomba[l] = '\0';
 	return (nomba);
+}
+/**
+  *chkz - checks if n = 0 or int_min
+  *@n: passed int
+  *Return: str ptr
+  */
+char *chkz(int n)
+{
+	char *nomba;
+
+	if (n == INT_MIN)
+	{
+		nomba = malloc(12 * sizeof(char));
+		if (nomba == 0)
+			return (0);
+		strcpy(nomba, "-2147483648");
+		return (nomba);
+	}
+	else if (n == 0)
+	{
+		nomba = malloc(2 * sizeof(char));
+		if (nomba == 0)
+			return (0);
+		nomba[0] = '0';
+		nomba[1] = '\0';
+		return (nomba);
+	}
+	else if (n == INT_MAX)
+	{
+		nomba = malloc(11 * sizeof(char));
+		if (nomba == 0)
+			return (0);
+		strcpy(nomba, "2147483647");
+		return (nomba);
+	}
+	else
+		return (0);
 }
