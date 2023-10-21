@@ -9,38 +9,41 @@
   */
 int riry(const char *format, va_list args, int i)
 {
-	unsigned int a;
-	int ctr = 0, b;
-	char *riry, *biform = "01";
+	int ctr = 0, b, c, start, end, temp;
+	char *riry;
 
 	if (format[i + 1] == 'b')
 	{
-		a = va_arg(args, int);
+		c = va_arg(args, unsigned int);
 		riry = malloc((32 + 1) * sizeof(char));
 		if (riry == NULL)
-			return (NULL);
-		if (a == 0)
+			return (-1);
+		b = 0;
+		while (c != 0)
 		{
-			riry[i + 1] = '0';
-			ctr++;
-			return (ctr);
+			if ((c % 2) == 1)
+				riry[b] = '1';
+			else
+				riry[b] = '0';
+			c /= 2;
+			b++;
 		}
-		else
+		riry[b] = '\0';
+		start = 0;
+		end = strlen(riry) - 1;
+		while (start < end)
 		{
-			b = 0;
-			while (a != 0)
-			{
-				riry[b + 1] = biform[a % 2];
-				a /= 2;
-			}
-			while (b >= 0; b += 1; b --)
-			{
-				riry[i + 1] = riry[b + 1];
-				putchar(riry[i] + '0');
-				ctr++;
-			}
+			temp = riry[start];
+			riry[start] = riry[end];
+			riry[end] = temp;
+			start++;
+			end--;
 		}
-		riry[i] = '\0';
+		for (i = 0; riry[i] != '\0'; i++)
+		{
+			_putchar(riry[i]);
+		}
+		ctr += strlen(riry);
 	}
 	free(riry);
 	return (ctr);

@@ -57,7 +57,7 @@ int handle_see(const char *format, va_list args, int i)
   */
 int conti(const char *format, va_list args, int i)
 {
-	int dandli_return, ctr = 0;
+	int dandli_return, h, ctr = 0;
 
 	if (format[i + 1] == '%')
 	{

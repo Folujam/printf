@@ -17,5 +17,6 @@ int dandli(const char *format, va_list agrs, int i);
 char *int_to_stng(int n);
 int conti(const char *format, va_list args, int i);
 char *chkz(int n);
+int riry(const char *format, va_list args, int i);
 
 #endif
